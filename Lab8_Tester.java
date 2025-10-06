@@ -1,3 +1,4 @@
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class Lab8_Tester {
@@ -87,7 +88,7 @@ public class Lab8_Tester {
     expected = "ENDSTATION Museum: pink line, in service: true, previous station: Square, next station: Square";
     assertEquals(expected, s1.toString());
   }
-
+  
   @Test 
   public void test5(){
     System.out.println("test TransferStation setup");
