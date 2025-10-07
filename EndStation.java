@@ -5,8 +5,8 @@ public class EndStation extends Station{
     }
 
     public void makeEnd(){
-        if(getNextStation() != null && getPreviousStation() == null) addPrev(getNextStation());
-        if(getNextStation() == null && getPreviousStation() != null) addNext(getPreviousStation());
+        if (this.next == null) this.next = this.prev; 
+        else this.prev = this.next;
     }
 
     @Override
