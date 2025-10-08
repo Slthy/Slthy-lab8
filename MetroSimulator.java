@@ -63,49 +63,57 @@ public class MetroSimulator{
 		s5 = new EndStation("purple", "S5");
 	}
 
-	public static EndStation makeOrangeLine(){
-		va_square.connect(clarendon);
+    public static EndStation makeOrangeLine() {
+        va_square.connect(clarendon);
+        clarendon.connect(court_house);
+        court_house.connect(rosslyn);
+        rosslyn.connect(foggy_bottom);
+        foggy_bottom.connect(farragut_west);
+        farragut_west.connect(mcpherson_square);
+        mcpherson_square.connect(metro_center);
+        metro_center.connect(federal_triangle);
+        federal_triangle.connect(smithsonian);
+        
+        va_square.makeEnd();
+        smithsonian.makeEnd();
 
-		va_square.makeEnd(clarendon);
+        return va_square;
+    }
 
-		court_house.connect(claredon);
+    public static EndStation makeRedLine() {
+        woodley_park.connect(dupont_circle);
+        dupont_circle.connect(farragut_north);
 
-		rosslyn.connect(court_house);
+        farragut_north.next = metro_center;	// one way
+        gallery_place.prev = metro_center;	// one way
+        
+        gallery_place.connect(judiciary_square);
 
-		foggy_bottom.connect(rosslyn);
-
-		farragut_west.connect(foggy_bottom);
-
-		mcpherson_square.connect(farragut_west);
-
-		metro_center.connect(mcpherson_square);
-
-		federal_triangle.connect(metro_center);
-
-		smithsonian.connect(metro_center);
-
-		smithsonian.makeEnd(federal_triangle)
-		return va_square;
-
-	}
-è
-	public static EndStation makeRedLine() {
-		woodley_park.connect(dupont_circle);
-		dupont_circle.connect(farragut_north);
-		farragut_north.connect(metro_center);
-		metro_center.connect(judiciary_square);
-		judiciary_square.connect(gallery_place);
+        woodley_park.makeEnd();
+        judiciary_square.makeEnd();
+        
+        metro_center.addTransfer(farragut_north);
 		metro_center.addTransfer(gallery_place);
-		metro_center.addTransfer(farragut_north);
 
-		return (EndStation) woodley_park;
-	}
+		return woodley_park;
 
-	public static EndStation makePurpleLine(){
-		s1.connect(s2);
-		
-		//connect the other stations here
+    }
 
-		return s1;
-	}
+    public static EndStation makePurpleLine() {
+        s1.connect(s2);
+        s2.connect(s3);
+
+        s3.next = metro_center;
+        s4.prev = metro_center;
+        
+        s4.connect(s5);
+
+        s1.makeEnd();
+        s5.makeEnd();
+
+        metro_center.addTransfer(s3);
+        metro_center.addTransfer(s4);
+
+        return s1;
+    }
 }

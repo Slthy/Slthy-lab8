@@ -4,13 +4,13 @@ public class EndStation extends Station{
         super(line, name);
     }
 
-    public void makeEnd(){
-        if (this.next == null) this.next = this.prev; 
+    public void makeEnd() {
+        if (this.next == null) this.next = this.prev;
         else this.prev = this.next;
     }
 
     @Override
-    public String toString(){
-        return "END" + super.toString();
+    public String toString() {
+        return super.toString().replace("STATION", "ENDSTATION");
     }
 }
