@@ -28,19 +28,16 @@ public class Station {
     public String getName() { return this.name; }
     public String getLine() { return this.line; }
 
-    // FIX 1: Make addNext bidirectional
     public void addNext(Station next) {
         this.next = next;
         next.prev = this;
     }
 
-    // FIX 2: Make addPrev bidirectional
     public void addPrev(Station prev) {
         this.prev = prev;
         prev.next = this;
     }
 
-    // This method should also be bidirectional
     public void connect(Station s) {
         this.next = s;
         s.prev = this;
@@ -57,7 +54,28 @@ public class Station {
         return this.name.equals(other.getName()) && this.line.equals(other.getLine());
     }
 
-    public int tripLength(Station destination){
-        return 0;
+    public int tripLength(Station dest) {
+        return tripLength(dest, 0, new ArrayList<>()); 
+    }
+
+    private int tripLength(Station dest, int steps, ArrayList<Station> visited) {
+        visited.add(this);
+        if (this.equals(dest)) return steps;
+        
+        if (this instanceof TransferStation){
+            TransferStation t = (TransferStation) this;
+            for (Station s : t.otherStations){
+                visited.add(s);
+                if (s.next != null) {
+                    if(!visited.contains(s.next)) return s.next.tripLength(dest, ++steps, visited);
+                }
+            }
+        }
+        if (this.next != null) {
+            if(!visited.contains(this.next)) return this.next.tripLength(dest, ++steps, visited);
+
+        }
+        
+        return -1; // not found
     }
 }

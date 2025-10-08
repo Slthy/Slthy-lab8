@@ -2,7 +2,7 @@ import java.util.*;
 
 public class TransferStation extends Station {
 
-    public ArrayList<Station> otherStations = new ArrayList<>();
+    protected ArrayList<Station> otherStations = new ArrayList<>();
 
     public TransferStation(String line, String name) {
         super(line, name);
@@ -14,6 +14,10 @@ public class TransferStation extends Station {
         }
     }
 
+    // same as
+    //  this.next = s;
+    //  s.prev = this;
+    
     // bidirectional link
     public void addTransferStationNext(Station next) { 
         addTransfer(next);

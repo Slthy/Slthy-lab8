@@ -1,0 +1,35 @@
+JUnit version 4.13
+.test purple line
+.test short straight trips
+.test short transfer trips
+E.test long trips
+E.test Station ctor and setup
+.test Station equals
+.test EndStation setup
+.test EndStation makeEnd
+.test TransferStation setup
+.test add TransferStation
+.test Station connect
+.test orange line
+.test red line
+
+Time: 0,113
+There were 2 failures:
+1) test12(Lab8_Tester)
+java.lang.AssertionError: expected:<4> but was:<-1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at Lab8_Tester.test12(Lab8_Tester.java:307)
+2) test13(Lab8_Tester)
+java.lang.AssertionError: expected:<9> but was:<-1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at Lab8_Tester.test13(Lab8_Tester.java:325)
+
+FAILURES!!!
+Tests run: 13,  Failures: 2
+
